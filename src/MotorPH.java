@@ -177,7 +177,6 @@ public class MotorPH {
             double totalHours = attendanceModel.getTotalHoursWorked(emp.getEmpNo());
             double grossSalary = totalHours * emp.getHourlyRate();
 
-            String salaryBracket = String.valueOf((int) emp.getBasicSalary());
             double sssDeduction = sssModel.calculateDeduction(emp.getBasicSalary());
             double philhealthDeduction = philhealthModel.calculateDeduction(emp.getBasicSalary());
             double pagibigDeduction = pagibigModel.calculateDeduction(emp.getBasicSalary());
