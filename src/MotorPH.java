@@ -77,7 +77,7 @@ public class MotorPH {
         }
 
         System.out.println("**********************************************");
-        System.out.println("         List of Employee Records            ");
+        System.out.println("         List of Employee Records             ");
         System.out.println("**********************************************");
         System.out.printf("%-10s %-20s %-15s\n", "Emp No", "Name", "Birthday");
         System.out.println("----------------------------------------------------------");
@@ -132,7 +132,7 @@ public class MotorPH {
         }
 
         System.out.println("**********************************************");
-        System.out.println("        Gross Weekly Salary Report           ");
+        System.out.println("            Weekly Salary                     ");
         System.out.println("**********************************************");
         System.out.printf("%-10s %-20s %-15s %-15s\n", "Emp No", "Name", "Total Hours", "Gross Salary");
         System.out.println("----------------------------------------------------------");
@@ -162,8 +162,13 @@ public class MotorPH {
             return;
         }
 
+        DeductionModel sssModel = DeductionCalculator.getDeductionModel("sss");
+        DeductionModel philhealthModel = DeductionCalculator.getDeductionModel("philhealth");
+        DeductionModel pagibigModel = DeductionCalculator.getDeductionModel("pagibig");
+        DeductionModel taxModel = DeductionCalculator.getDeductionModel("tax");
+
         System.out.println("**********************************************");
-        System.out.println("           Net Weekly Salary Report          ");
+        System.out.println("           Net Salary                         ");
         System.out.println("**********************************************");
         System.out.printf("%-10s %-20s %-15s\n", "Emp No", "Name", "Net Salary");
         System.out.println("----------------------------------------------------------");
@@ -171,20 +176,21 @@ public class MotorPH {
         for (Employee emp : employees) {
             double totalHours = attendanceModel.getTotalHoursWorked(emp.getEmpNo());
             double grossSalary = totalHours * emp.getHourlyRate();
-            double deductions = computeDeductions(emp);
-            double netSalary = grossSalary - deductions;
+
+            String salaryBracket = String.valueOf((int) emp.getBasicSalary());
+            double sssDeduction = sssModel.calculateDeduction(emp.getBasicSalary());
+            double philhealthDeduction = philhealthModel.calculateDeduction(emp.getBasicSalary());
+            double pagibigDeduction = pagibigModel.calculateDeduction(emp.getBasicSalary());
+            double taxDeduction = taxModel.calculateDeduction(emp.getBasicSalary());
+
+
+            double totalDeductions = sssDeduction + philhealthDeduction + pagibigDeduction + taxDeduction;
+            double netSalary = grossSalary - totalDeductions;
 
             System.out.printf("%-10s %-20s %-15.2f\n",
                     emp.getEmpNo(),
                     emp.getFirstName() + " " + emp.getLastName(),
                     netSalary);
         }
-    }
-
-    private static double computeDeductions(Employee emp) {
-        double sss = emp.getBasicSalary() * 0.045; // SSS deduction (4.5%)
-        double philHealth = emp.getBasicSalary() * 0.035; // PhilHealth deduction (3.5%)
-        double pagIbig = 100; // Fixed Pag-IBIG deduction
-        return sss + philHealth + pagIbig;
     }
 }
