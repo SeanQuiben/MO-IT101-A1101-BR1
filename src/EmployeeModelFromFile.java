@@ -4,7 +4,7 @@ import java.util.*;
 public class EmployeeModelFromFile extends EmployeeModel {
     private List<Employee> employeeList = new ArrayList<>();
 
-    public EmployeeModelFromFile() { // No parameters
+    public EmployeeModelFromFile() {
         loadEmployees(); // Load employees directly from CSV
     }
 

@@ -27,12 +27,12 @@ public class AttendanceModelFromFile {
             DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm");
 
             while ((line = br.readLine()) != null) {
+                String[] data = line.split(",");
+
                 if (isFirstLine) {
                     isFirstLine = false;
                     continue; // Skip the header
                 }
-
-                String[] data = line.split(",");
 
                 if (data.length < 6) {
                     System.out.println("Warning: Skipping invalid entry -> " + line);
@@ -40,12 +40,12 @@ public class AttendanceModelFromFile {
                 }
 
                 try {
-                    String empNo = data[0].trim();
-                    String lastName = data[1].trim();
-                    String firstName = data[2].trim();
-                    LocalDate date = LocalDate.parse(data[3].trim(), dateFormatter);
-                    LocalTime loginTime = LocalTime.parse(data[4].trim(), timeFormatter);
-                    LocalTime logoutTime = LocalTime.parse(data[5].trim(), timeFormatter);
+                    String empNo = data[0].trim(); // "Employee #"
+                    String lastName = data[1].trim(); // "Last Name"
+                    String firstName = data[2].trim(); // "First Name"
+                    LocalDate date = LocalDate.parse(data[3].trim(), dateFormatter); // "Date"
+                    LocalTime loginTime = LocalTime.parse(data[4].trim(), timeFormatter); // "Log In"
+                    LocalTime logoutTime = LocalTime.parse(data[5].trim(), timeFormatter); // "Log Out"
 
                     attendanceList.add(new Attendance(empNo, lastName, firstName, date, loginTime, logoutTime));
                 } catch (Exception e) {
@@ -74,3 +74,4 @@ public class AttendanceModelFromFile {
         return totalHours;
     }
 }
+

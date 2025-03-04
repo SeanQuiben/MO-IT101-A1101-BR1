@@ -30,7 +30,7 @@ public class AttendanceModel {
                 }
 
                 String[] data = line.split(",");
-                if (data.length < 5) continue; // Ensure valid data
+                if (data.length < 5) continue;
 
                 String empNo = data[0].trim();
                 String date = data[3].trim();
