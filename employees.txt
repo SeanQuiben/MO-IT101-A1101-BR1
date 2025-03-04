@@ -1,0 +1,186 @@
+                                                                                                                                                            Gross
+                                                                                                                                                            Semi-
+               First                              Phone                     TIN                                  Immediate Basic Rice     Phone    Clothing monthlyHourly
+     Last Name Name    Birthday    Address        NumberSSS # Philhealth # # Pag-ibig #     Status    Position   Supervisor Salary SubsidyAllowanceAllowanceRate Rate
+                                   Valero
+                                   Carpark
+                                   Building                                 442-
+                                   Valero Street 966-   44-                 605-                      Chief
+                Manuel             1227, Makati 860-    4506057-            657-                      Executive
+10001Garcia     III      10/11/1983City           270   3       820126853951000 691295330870Regular   Officer   N/A         90,0001,500   2,000         1,000      45,000 535.71
+                                   San Antonio
+                                   De Padua 2,
+                                   Block 1 Lot 8                            683-
+                                   and 2,         171-  52-                 102-                      Chief
+                                   Dasmarinas, 867-     2061274-            776-                      Operating Garcia,
+10002Lim        Antonio 06/19/1988Cavite          411   9       331735646338000 663904995411Regular   Officer   Manuel III 60,0001,500    2,000         1,000      30,000 357.14
+                                   Rm. 402 4/F
+                                   Jiao Building
+                                   Timog Avenue                             971-
+                                   Cor. Quezon 966-     30-                 711-                      Chief
+                Bianca             Avenue 1100, 889-    8870406-            280-                      Finance    Garcia,
+10003Aquino     Sofia    08/04/1989Quezon City 370      2       177451189665000 171519773969Regular   Officer    Manuel III 60,0001,500   2,000         1,000      30,000 357.14
+                                   460 Solanda                              876-
+                                   Street         786-  40-                 809-                      Chief
+                                   Intramuros     868-  2511815-            437-                      Marketing Garcia,
+10004Reyes      Isabella 06/16/19941000, Manila 477     0       341911411254000 416946776041Regular   Officer   Manuel III 60,0001,500    2,000         1,000      30,000 357.14
+                                   National
+                                   Highway,                                 031-                      IT
+                                   Gingoog,       088-  50-                 702-                      Operations
+                                   Misamis        861-  5577638-            374-                      and        Lim,
+10005Hernandez Eduard 09/23/1989Occidental        012   1       957436191812000 952347222457Regular   Systems Antonio       52,6701,500   1,000         1,000      26,335 313.51
+                                   17/85 Stracke
+                                   Via Suite 042,
+                                   Poblacion,                               317-
+                                   Las Piñas      918-  49-                 674-
+                Andrea             4783 Dinagat 621-    1632020-            022-                      HR      Lim,
+10006Villanueva Mae      02/14/1988Islands        603   8       382189453145000 441093369646Regular   Manager Antonio       52,6701,500   1,000         1,000      26,335 313.51
+                                   99 Strosin
+                                   Hills,                                   672-
+                                   Poblacion,     797-  40-                 474-                              Villanueva,
+                                   Bislig 5340    009-  2400714-            690-                      HR Team Andrea
+10007San Jose Brad       03/15/1996Tawi-Tawi      261   1       239192926939000 210850209964Regular   Leader  Mae         42,9751,500             800           80021,488   255.8
+                                   12A/33 Upton
+                                   Isle Apt. 420,                           888-
+                                   Roxas City     983-  55-                 572-
+                                   1814 Surigao 606-    4476527-            294-                      HR Rank San, Jose
+10008Romualdez Alice     05/14/1992del Norte      799   2       545652640232000 211385556888Regular   and File Brad     22,5001,500               500           50011,250 133.93
+                                   90A Dibbert
+                                   Terrace Apt.
+                                   190, San                                 604-
+                                   Lorenzo 6056 266-    41-                 997-
+                                   Davao del      036-  0644692-            793-                      HR Rank San, Jose
+10009Atienza    Rosie 09/24/1948Norte             427   3       708988234853000 260107732354Regular   and File Brad     22,5001,500               500           50011,250 133.93
+                                   #284 T.
+                                   Morato                                   525-
+                                   corner, Scout 053-   64-                 420-                                Aquino,
+                                   Rallos Street, 381-  7605054-            419-                      AccountingBianca
+10010Alvaro     Roderick03/30/1988Quezon City 386       4       578114853194000 799254095212Regular   Head      Sofia       52,6701,500   1,000         1,000      26,335 313.51
+                                   93/54
+                                   Shanahan                                 210-
+                                   Alley Apt. 183,070-  26-                 805-
+                                   Santo Tomas 766-     9647608-            911-                      Payroll Alvaro,
+10011Salcedo    Anthony 09/14/19931572 Masbate 300      3       126445315651000 218002473454Regular   Manager Roderick      50,8251,500   1,000         1,000      25,413 302.53
+                                   49 Springs
+                                   Apt. 266,
+                                   Poblacion,                               218-
+                                   Taguig 3200 478-     44-                 489-                      Payroll
+                                   Occidental     355-  8563448-            737-                      Team       Salcedo,
+10012Lopez      Josie    01/14/1987Mindoro        427   3       431709011012000 113071293354Regular   Leader     Anthony    38,4751,500           800           80019,238 229.02
+                                   42/25 Sawayn
+                                   Stream, Ubay                             210-
+                                   1208           329-  45-                 835-                      Payroll
+                                   Zamboanga 034-       5656375-            851-                      Rank and Salcedo,
+10013Farala     Martha 01/11/1942del Norte        366   0       233693897247000 631130283546Regular   File     Anthony      24,0001,500           500           50012,000 142.86
+                                   37/46 Kulas                              275-
+                                   Roads,         877-  27-                 792-                      Payroll
+                                   Maragondon 110-      2090996-            513-                      Rank and Salcedo,
+10014Martinez   Leila    07/11/19700962 Quirino 749     4       515741057496000 101205445886Regular   File     Anthony      24,0001,500           500           50012,000 142.86
+                                   22A/52
+                                   Lubowitz                                 598-
+                                   Meadows,       023-  26-                 065-
+                                   Pililla 4895   079-  8768374-            761-                      Account Lim,
+10015Romualdez Fredrick 03/10/1985Zambales        009   1       308366860059000 223057707853Regular   Manager Antonio       53,5001,500   1,000         1,000      26,750 318.45
+                                   90 O'Keefe                               103-
+                                   Spur Apt. 379, 783-  49-                 100-                      Account
+                                   Catigbian      776-  2959312-            522-                      Team       Romualdez,
+10016Mata       Christian10/21/19872772 Sulu      744   6       824187961962000 631052853464Regular   Leader     Fredrick   42,9751,500           800           80021,488   255.8
+                                   89A
+                                   Armstrong
+                                   Trace,                                   482-
+                                   Compostela 975-      27-                 259-                      Account
+                                   7874           432-  2090208-            498-                      Team       Romualdez,
+10017De Leon    Selena 02/20/1975Maguindanao 139        8       587272469938000 719007608464Regular   Leader     Fredrick   41,8501,500           800           80020,925 249.11
+                                   08 Grant
+                                   Drive Suite
+                                   406,                                     121-
+                                   Poblacion,     179-  45-                 203-                      Account
+                                   Iloilo City    075-  3251383-            336-                      Rank and Mata,
+10018San Jose Allison 06/24/19869186 La Union129        0       745148459521000 114901859343Regular   File     Christian    22,5001,500           500           50011,250 133.93
+                                                                            122-
+                                   93A/21 Berge 868-    49-                 244-                      Account
+                                   Points, Tapaz 819-   1629900-            511-                      Rank and Mata,
+10019Rosario    Cydney 10/06/19962180 Quezon 912        2       579253435499000 265104358643Regular   File     Christian    22,5001,500           500           50011,250 133.93
+                                       65 Murphy
+                                       Center Suite
+                                       094,                                     273-
+                                       Poblacion,    683-   49-                 970-                          Account
+                                       Palayan 5636 725-    1647342-            941-                          Rank and Mata,
+10020Bautista    Mark       02/12/1991Quirino        348    5       399665157135000 260054585575Regular       File     Christian     23,2501,500           500           50011,625 138.39
+                                       47A/94 Larkin
+                                       Plaza Apt.
+                                       179,                                     354-
+                                       Poblacion,    740-   45-                 650-                        Account
+                                       Caloocan      721-   5617168-            951-                        Rank and Mata,
+10021Lazaro      Darlene    11/25/19852751 Quirino 558      2       606386917510000 104907708845ProbationaryFile     Christian       23,2501,500           500           50011,625 138.39
+                                       06A
+                                       Gulgowski
+                                       Extensions,
+                                       Bongabon                                 187-
+                                       6085          739-   52-                 500-                        Account
+     Delos                             Zamboanga 443-       0109570-            345-                        Rank and Mata,
+10022Santos      Kolby      02/26/1980del Sur        033    6       357451271274000 113017988667ProbationaryFile     Christian       24,0001,500           500           50012,000 142.86
+                                       99A Padberg
+                                       Spring,
+                                       Poblacion,                               101-
+                                       Mabalacat     955-   52-                 558-                        Account
+                                       3959 Lanao 879-      9883524-            994-                        Rank and Mata,
+10023Santos      Vella      12/31/1983del Sur        269    3       548670482885000 360028104576ProbationaryFile     Christian       22,5001,500           500           50011,250 133.93
+                                       80A/48
+                                       Ledner
+                                       Ridges,
+                                       Poblacion,                               560-
+                                       Kabankalan 882-      45-                 735-                        Account
+                                       8870          550-   5866331-            732-                        Rank and Mata,
+10024Del Rosario Tomas      12/18/1978Marinduque 989        6       953901539995000 913108649964ProbationaryFile     Christian       22,5001,500           500           50011,250 133.93
+                                       96/48 Watsica
+                                       Flats Suite
+                                       734,                                     841-
+                                       Poblacion,    675-   47-                 177-                        Account
+                                       Malolos 1844 757-    1692793-            857-                        Rank and De Leon,
+10025Tolentino   Jacklyn    05/19/1984Ifugao         366    0       753800654114000 210546661243ProbationaryFile     Selena          24,0001,500           500           50012,000 142.86
+                                       58A
+                                       Wilderman
+                                       Walks,                                   502-
+                                       Poblacion,    512-   40-                 995-                        Account
+                                       Digos 5822 899-      9504657-            671-                        Rank and De Leon,
+10026Gutierrez   Percival   12/18/1970Davao del Sur 876     8       797639382265000 210897095686ProbationaryFile     Selena          24,7501,500           500           50012,375 147.32
+                                       60 Goyette
+                                       Valley Suite
+                                       219,                                     336-
+                                       Poblacion,    948-   45-                 676-                        Account
+                                       Tabuk 3159 628-      3298166-            445-                        Rank and De Leon,
+10027ManalaysayGarfield     08/28/1986Lanao del Sur 136     4       810909286264000 211274476563ProbationaryFile     Selena          24,7501,500           500           50012,375 147.32
+                                       66/77 Mann
+                                       Views,                                    210-
+                                       Luisiana 1263 332-   40-                  395-                          Account
+                                       Dinagat       372-   2400719-             397-                          Rank and
+                                       Islands       215    4                    000                           File       De Leon,
+10028Villegas    Lizeth     12/12/1981                              934389652994      122238077997Probationary            Selena     24,0001,500           500           50012,000 142.86
+                                                                                 395-
+                                  72/70 Stamm 250-          60-                  032-                          Account
+                                  Spurs, Bustos 700-        1152206-             717-                          Rank and   De Leon,
+10029Ramos       Carol  08/20/19784550 Iloilo   389         4       351830469744000 212141893454ProbationaryFile          Selena     22,5001,500           500           50011,250 133.93
+                                  50A/83
+                                  Bahringer
+                                  Oval Suite                                    215-
+                                  145, Kiamba 973-          54-                 973-                        Account
+                                  7688 Nueva 358-           1331005-            013-                        Rank and      De Leon,
+10030Maceda      Emelia 04/14/1973Ecija         041         0       465087894112000 515012579765ProbationaryFile          Selena     22,5001,500           500           50011,250 133.93
+                                  95 Cremin                                     599-
+                                  Junction,     529-        52-                 312-                        Account
+                                  Surallah 2809 705-        1859253-            588-                        Rank and      De Leon,
+10031Aguilar     Delia  01/27/1989Cotabato      439         1       136451303068000 110018813465ProbationaryFile          Selena     22,5001,500           500           50011,250 133.93
+                                                                                404-
+                                                    332-    26-                 768-
+                 John                 Hi-way, Yati, 424-    7145133-            309-                        Sales &       Reyes,
+10032Castro      Rafael     02/09/1992Liloan Cebu 955       4       601644902402000 697764069311Regular     Marketing     Isabella   52,6701,500   1,000         1,000      26,335 313.51
+                                                                                256-
+                                                   078-     11-                 436-                        Supply
+                 Carlos               Bulala,      854-     5062972-            296-                        Chain and     Reyes,
+10033Martinez    Ian        11/16/1990Camalaniugan 208      7       380685387212000 993372963726Regular     Logistics     Isabella   52,6701,500   1,000         1,000      26,335 313.51
+                                                                                911-                        Customer
+                                   Agapita      526-        20-                 529-                        Service
+                                   Building,    639-        2987501-            713-                        and           Reyes,
+10034Santos      Beatriz 08/07/1990Metro Manila 511         5       918460050077000 874042259378Regular     Relations     Isabella   52,6701,500   1,000         1,000      26,335 313.51
+
