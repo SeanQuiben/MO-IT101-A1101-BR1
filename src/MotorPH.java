@@ -3,11 +3,12 @@ import java.util.*;
 public class MotorPH {
 
     private static EmployeeModel employeeModel;
-    private static final Scanner scanner = new Scanner(System.in); // Use a single Scanner object
+    private static AttendanceModelFromFile attendanceModel;
+    private static final Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         displayMainMenu();
-        scanner.close(); // Close Scanner when the program ends
+        scanner.close();
     }
 
     private static void displayMainMenu() {
@@ -49,10 +50,11 @@ public class MotorPH {
     private static void choosePlatform() {
         System.out.println("*********************************************");
         System.out.println("     You have chosen option #1");
-        System.out.println("     Data will be read from employees.csv");
+        System.out.println("     Data will be read from employees.csv and attendance.csv");
         System.out.println("*********************************************");
 
-        // Always use the CSV file, so no need for user input
+        //Load Employee and Attendance data
+        attendanceModel = new AttendanceModelFromFile();
         employeeModel = new EmployeeModelFromFile();
         System.out.println("Employee data successfully loaded.");
 
@@ -82,12 +84,71 @@ public class MotorPH {
         }
     }
 
-    private static void calculateNetSalary() {
-        System.out.println("Net salary calculation feature is under development.");
+    private static void salaryOnHoursWorked() {
+        if (employeeModel == null) {
+            System.out.println("Please load employee data first (Option 1).");
+            return;
+        }
+
+        Employee[] employees = employeeModel.getEmployeeModelList();
+        if (employees == null || employees.length == 0) {
+            System.out.println("No employee records found.");
+            return;
+        }
+
+        System.out.println("**********************************************");
+        System.out.println("        Salary Based on Hours Worked          ");
+        System.out.println("**********************************************");
+        System.out.printf("%-10s %-20s %-15s %-15s\n", "Emp No", "Name", "Total Hours", "Salary");
+        System.out.println("----------------------------------------------------------");
+
+        for (Employee emp : employees) {
+            double totalHours = attendanceModel.getTotalHoursWorked(emp.getEmpNo());
+            double salary = totalHours * emp.getHourlyRate();
+
+            System.out.printf("%-10s %-20s %-15.2f %-15.2f\n",
+                    emp.getEmpNo(),
+                    emp.getFirstName() + " " + emp.getLastName(),
+                    totalHours,
+                    salary);
+        }
     }
 
-    private static void salaryOnHoursWorked() {
-        System.out.println("Salary calculation based on hours worked is under development.");
+    private static void calculateNetSalary() {
+        if (employeeModel == null) {
+            System.out.println("Please load employee data first (Option 1).");
+            return;
+        }
+
+        Employee[] employees = employeeModel.getEmployeeModelList();
+        if (employees == null || employees.length == 0) {
+            System.out.println("No employee records found.");
+            return;
+        }
+
+        System.out.println("**********************************************");
+        System.out.println("                Net Salary Report            ");
+        System.out.println("**********************************************");
+        System.out.printf("%-10s %-20s %-15s\n", "Emp No", "Name", "Net Salary");
+        System.out.println("----------------------------------------------------------");
+
+        for (Employee emp : employees) {
+            double grossSalary = emp.getBasicSalary() + emp.getRiceSubsidy() + emp.getPhoneAllowance() + emp.getClothingAllowance();
+            double deductions = computeDeductions(emp);
+            double netSalary = grossSalary - deductions;
+
+            System.out.printf("%-10s %-20s %-15.2f\n",
+                    emp.getEmpNo(),
+                    emp.getFirstName() + " " + emp.getLastName(),
+                    netSalary);
+        }
+    }
+
+    private static double computeDeductions(Employee emp) {
+        double sss = emp.getBasicSalary() * 0.045; // Example SSS deduction (4.5%)
+        double philHealth = emp.getBasicSalary() * 0.035; // Example PhilHealth deduction (3.5%)
+        double pagIbig = 100; // Fixed Pag-IBIG deduction
+        return sss + philHealth + pagIbig;
     }
 }
 
