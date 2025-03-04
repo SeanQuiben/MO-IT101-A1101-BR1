@@ -111,10 +111,7 @@ public class MotorPH {
         for (Employee emp : employees) {
             double totalHours = attendanceModel.getTotalHoursWorked(emp.getEmpNo());
 
-            System.out.printf("%-10s %-20s %-15.2f\n",
-                    emp.getEmpNo(),
-                    emp.getFirstName() + " " + emp.getLastName(),
-                    totalHours);
+            System.out.printf("%-10s %-20s %-15.2f\n", emp.getEmpNo(), emp.getFirstName() + " " + emp.getLastName(), totalHours);
         }
     }
 
@@ -141,11 +138,7 @@ public class MotorPH {
             double totalHours = attendanceModel.getTotalHoursWorked(emp.getEmpNo());
             double grossSalary = totalHours * emp.getHourlyRate();
 
-            System.out.printf("%-10s %-20s %-15.2f %-15.2f\n",
-                    emp.getEmpNo(),
-                    emp.getFirstName() + " " + emp.getLastName(),
-                    totalHours,
-                    grossSalary);
+            System.out.printf("%-10s %-20s %-15.2f %-15.2f\n", emp.getEmpNo(), emp.getFirstName() + " " + emp.getLastName(), totalHours, grossSalary);
         }
     }
 
