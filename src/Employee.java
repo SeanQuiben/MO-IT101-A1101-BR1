@@ -1,181 +1,73 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Employee {
-    private String empNo;
-    private String lastName;
-    private String firstName;
+    private String employeeNumber;
+    private String name;
     private String birthday;
-    private String address;
-    private String phoneNumber;
-    private String sssNo;
-    private String philHealthNo;
-    private String tinNo;
-    private String pagibigNo;
-    private String status;
-    private String position;
-    private String supervisor;
-    private double basicSalary;
-    private double riceSubsidy;
-    private double phoneAllowance;
-    private double clothingAllowance;
-    private double semiMonthlyRate;
     private double hourlyRate;
 
-    // Add constructors, getters, and setters as needed
-
-    public Employee() {
-        // Default constructor
+    public Employee(String employeeNumber, String name, String birthday, double hourlyRate) {
+        this.employeeNumber = employeeNumber;
+        this.name = name;
+        this.birthday = birthday;
+        this.hourlyRate = hourlyRate;
     }
 
-    // Example getter and setter
-    public String getEmpNo() {
-        return empNo;
+    public String getEmployeeNumber() {
+        return employeeNumber;
     }
 
-    public void setEmpNo(String empNo) {
-        this.empNo = empNo;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getName() {
+        return name;
     }
 
     public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getSssNo() {
-        return sssNo;
-    }
-
-    public void setSssNo(String sssNo) {
-        this.sssNo = sssNo;
-    }
-
-    public String getPhilHealthNo() {
-        return philHealthNo;
-    }
-
-    public void setPhilHealthNo(String philHealthNo) {
-        this.philHealthNo = philHealthNo;
-    }
-
-    public String getTinNo() {
-        return tinNo;
-    }
-
-    public void setTinNo(String tinNo) {
-        this.tinNo = tinNo;
-    }
-
-    public String getPagibigNo() {
-        return pagibigNo;
-    }
-
-    public void setPagibigNo(String pagibigNo) {
-        this.pagibigNo = pagibigNo;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public void setPosition(String position) {
-        this.position = position;
-    }
-
-    public String getSupervisor() {
-        return supervisor;
-    }
-
-    public void setSupervisor(String supervisor) {
-        this.supervisor = supervisor;
-    }
-
-    public double getBasicSalary() {
-        return basicSalary;
-    }
-
-    public void setBasicSalary(double basicSalary) {
-        this.basicSalary = basicSalary;
-    }
-
-    public double getRiceSubsidy() {
-        return riceSubsidy;
-    }
-
-    public void setRiceSubsidy(double riceSubsidy) {
-        this.riceSubsidy = riceSubsidy;
-    }
-
-    public double getPhoneAllowance() {
-        return phoneAllowance;
-    }
-
-    public void setPhoneAllowance(double phoneAllowance) {
-        this.phoneAllowance = phoneAllowance;
-    }
-
-    public double getClothingAllowance() {
-        return clothingAllowance;
-    }
-
-    public void setClothingAllowance(double clothingAllowance) {
-        this.clothingAllowance = clothingAllowance;
-    }
-
-    public double getSemiMonthlyRate() {
-        return semiMonthlyRate;
-    }
-
-    public void setSemiMonthlyRate(double semiMonthlyRate) {
-        this.semiMonthlyRate = semiMonthlyRate;
-    }
-
     public double getHourlyRate() {
         return hourlyRate;
     }
 
-    public void setHourlyRate(double hourlyRate) {
-        this.hourlyRate = hourlyRate;
+    @Override
+    public String toString() {
+        return String.format("%s | %s | %s", employeeNumber, name, birthday);
+    }
+
+    public static List<Employee> loadEmployeesFromCSV(String filePath) {
+        List<Employee> employees = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String header = br.readLine();
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] columns = line.split(",");
+                if (columns.length >= 19) {
+                    String empNumber = columns[0].trim().replace("\"", "");
+                    String lastName  = columns[1].trim().replace("\"", "");
+                    String firstName = columns[2].trim().replace("\"", "");
+                    String bday      = columns[3].trim().replace("\"", "");
+
+                    String fullName = lastName + ", " + firstName;
+
+                    String rateStr = columns[18].trim().replace("\"", "");
+                    double rate = Double.parseDouble(rateStr);
+
+                    Employee e = new Employee(empNumber, fullName, bday, rate);
+                    employees.add(e);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading employee data from CSV: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid HourlyRate format: " + e.getMessage());
+        }
+
+        return employees;
     }
 }
-
