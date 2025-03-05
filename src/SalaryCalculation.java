@@ -58,7 +58,7 @@ public class SalaryCalculation {
                     int weekNumber = date.get(weekFields.weekOfYear());
 
                     String fullName = lastName + " " + firstName;
-                    double hourlyRate = employeeHourlyRates.getOrDefault(empNo, 0.0); // Use correct rate
+                    double hourlyRate = employeeHourlyRates.getOrDefault(empNo, 0.0); // Used correct rate, else defaults to 0.0
 
                     salaryMap.putIfAbsent(empNo, new EmployeeSalaryData(fullName, hourlyRate));
                     EmployeeSalaryData esd = salaryMap.get(empNo);
