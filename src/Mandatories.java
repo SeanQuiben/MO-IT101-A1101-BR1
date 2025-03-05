@@ -54,7 +54,7 @@ public class Mandatories {
                     int weekNum = date.get(weekFields.weekOfYear());
 
                     String fullName = lastName + " " + firstName;
-                    double hourlyRate = employeeHourlyRates.getOrDefault(empNo, 0.0); // Use employee-specific rate
+                    double hourlyRate = employeeHourlyRates.getOrDefault(empNo, 0.0);
 
                     dataMap.putIfAbsent(empNo, new EmployeeData(fullName));
                     EmployeeData ed = dataMap.get(empNo);
@@ -76,7 +76,7 @@ public class Mandatories {
             int distinctWeeks = ed.weeksUsed.size();
             double weeklyHours = (distinctWeeks > 0) ? (ed.totalHours / distinctWeeks) : 0.0;
 
-            double hourlyRate = employeeHourlyRates.getOrDefault(empNo, 0.0); // Get the correct hourly rate, else defaults to 0.0
+            double hourlyRate = employeeHourlyRates.getOrDefault(empNo, 0.0); // Gets the correct hourly rate, else defaults to 0.0
             double weeklyGrossSalary = weeklyHours * hourlyRate;
 
             double monthlyGross = weeklyGrossSalary * 4;
