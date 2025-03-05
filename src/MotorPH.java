@@ -46,7 +46,7 @@ public class MotorPH {
                     break;
 
                 case 4:
-                    Mandatories.displayNetWeeklySalary(attendanceCsvPath);
+                    Mandatories.displayNetWeeklySalary(attendanceCsvPath,employeeCsvPath);
                     break;
 
                 case 5:

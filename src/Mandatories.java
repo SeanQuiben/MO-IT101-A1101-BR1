@@ -6,13 +6,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.WeekFields;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Mandatories {
 
@@ -28,9 +22,8 @@ public class Mandatories {
         }
     }
 
-    public static void displayNetWeeklySalary(String attendanceCsvPath) {
-        final double HOURLY_RATE = 350.0;  // Fixed hourly rate
-
+    public static void displayNetWeeklySalary(String attendanceCsvPath, String employeeCsvPath) {
+        Map<String, Double> employeeHourlyRates = loadEmployeeHourlyRates(employeeCsvPath); // Load dynamic rates
         Map<String, EmployeeData> dataMap = new HashMap<>();
 
         DateTimeFormatter dateFmt = DateTimeFormatter.ofPattern("MM/dd/yyyy");
@@ -61,6 +54,7 @@ public class Mandatories {
                     int weekNum = date.get(weekFields.weekOfYear());
 
                     String fullName = lastName + " " + firstName;
+                    double hourlyRate = employeeHourlyRates.getOrDefault(empNo, 0.0); // Use employee-specific rate
 
                     dataMap.putIfAbsent(empNo, new EmployeeData(fullName));
                     EmployeeData ed = dataMap.get(empNo);
@@ -73,19 +67,17 @@ public class Mandatories {
             System.err.println("Error reading attendance CSV: " + e.getMessage());
         }
 
-        ArrayList<String> sortedEmpNos = new ArrayList<>(dataMap.keySet());
-        Collections.sort(sortedEmpNos);
-
         System.out.println("\nEmployee # | Name                  | Weekly Gross Salary | Weekly Mandatories | Net Salary");
 
-        for (String empNo : sortedEmpNos) {
+        for (String empNo : dataMap.keySet()) {
             EmployeeData ed = dataMap.get(empNo);
             if (ed == null) continue;
 
             int distinctWeeks = ed.weeksUsed.size();
             double weeklyHours = (distinctWeeks > 0) ? (ed.totalHours / distinctWeeks) : 0.0;
 
-            double weeklyGrossSalary = weeklyHours * HOURLY_RATE;
+            double hourlyRate = employeeHourlyRates.getOrDefault(empNo, 0.0); // Get the correct hourly rate, else defaults to 0.0
+            double weeklyGrossSalary = weeklyHours * hourlyRate;
 
             double monthlyGross = weeklyGrossSalary * 4;
 
@@ -95,9 +87,7 @@ public class Mandatories {
             double wtax       = computeWithholdingTax(monthlyGross);
 
             double totalMonthlyMandatories = sss + philHealth + pagibig + wtax;
-
             double weeklyMandatories = totalMonthlyMandatories / 4;
-
             double netSalary = weeklyGrossSalary - weeklyMandatories;
 
             System.out.printf("%-10s | %-20s | %-21.2f | %-18.2f | %.2f\n",
@@ -105,7 +95,27 @@ public class Mandatories {
         }
     }
 
-    private static double computeSSS(double monthlyComp) {
+    private static Map<String, Double> loadEmployeeHourlyRates(String employeeCsvPath) {
+        Map<String, Double> hourlyRates = new HashMap<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(employeeCsvPath))) {
+            String header = br.readLine();
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] cols = line.split(",");
+                if (cols.length >= 19) {
+                    String empNo = cols[0].trim().replace("\"", "");
+                    double hourlyRate = Double.parseDouble(cols[cols.length - 1].trim()); // Last column contains hourly rate
+                    hourlyRates.put(empNo, hourlyRate);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading employee details: " + e.getMessage());
+        }
+        return hourlyRates;
+    }
+
+    public static double computeSSS(double monthlyComp) {
         if (monthlyComp < 3250) return 135.00;
         else if (monthlyComp < 3750) return 157.50;
         else if (monthlyComp < 4250) return 180.00;
@@ -153,45 +163,29 @@ public class Mandatories {
         else return 1125.00;
     }
 
-    private static double computePhilHealth(double monthlyComp) {
-        if (monthlyComp <= 10000) {
-            return 300;
-        } else if (monthlyComp >= 60000) {
-            return 1800;
-        } else {
-            double amt = monthlyComp * 0.03;
-            if (amt < 300)  amt = 300;
-            if (amt > 1800) amt = 1800;
-            return amt;
-        }
+    public static double computePhilHealth(double monthlyComp) {
+        if (monthlyComp <= 10000) return 300;
+        else if (monthlyComp >= 60000) return 1800;
+        else return Math.max(300, Math.min(1800, monthlyComp * 0.03));
     }
 
-    private static double computePagIbig(double monthlyComp) {
-        if (monthlyComp <= 1500) {
-            return monthlyComp * 0.03;
-        } else {
-            return monthlyComp * 0.04;
-        }
+    public static double computePagIbig(double monthlyComp) {
+        return (monthlyComp <= 1500) ? monthlyComp * 0.03 : monthlyComp * 0.04;
     }
 
-    private static double computeWithholdingTax(double monthlyComp) {
+    public static double computeWithholdingTax(double monthlyComp) {
         if (monthlyComp <= 20832) {
             return 0.0;
         } else if (monthlyComp < 33333) {
-            double excess = monthlyComp - 20833;
-            return excess * 0.20;
+            return (monthlyComp - 20833) * 0.20; // 20% of excess over 20,833
         } else if (monthlyComp < 66667) {
-            double excess = monthlyComp - 33333;
-            return 2500 + (excess * 0.25);
+            return 2500 + (monthlyComp - 33333) * 0.25; // ₱2,500 + 25% of excess over 33,333
         } else if (monthlyComp < 166667) {
-            double excess = monthlyComp - 66667;
-            return 10833 + (excess * 0.30);
+            return 10833 + (monthlyComp - 66667) * 0.30; // ₱10,833 + 30% of excess over 66,667
         } else if (monthlyComp < 666667) {
-            double excess = monthlyComp - 166667;
-            return 40833.33 + (excess * 0.32);
+            return 40833.33 + (monthlyComp - 166667) * 0.32; // ₱40,833.33 + 32% of excess over 166,667
         } else {
-            double excess = monthlyComp - 666667;
-            return 200833.33 + (excess * 0.35);
+            return 200833.33 + (monthlyComp - 666667) * 0.35; // ₱200,833.33 + 35% of excess over 666,667
         }
     }
 }
