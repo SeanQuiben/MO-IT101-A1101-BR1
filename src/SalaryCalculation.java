@@ -8,7 +8,20 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.WeekFields;
 import java.util.*;
 
+/**
+ * SalaryCalculation Class
+ *
+ * This class reads attendance records and employee details from both CSV files
+ * to compute the gross weekly salary for each employee based on total hours worked.
+ */
+
 public class SalaryCalculation {
+
+    /**
+     * EmployeeSalaryData Class
+     *
+     * Stores employee name, total hours worked, hourly rate, and unique weeks worked.
+     */
 
     static class EmployeeSalaryData {
         String employeeName;
@@ -23,6 +36,12 @@ public class SalaryCalculation {
             this.distinctWeeks = new HashSet<>();
         }
     }
+
+    /**
+     * Computes and displays the gross weekly salary for employees.
+     * attendanceCsvPath Path to the attendance CSV file
+     * employeeCsvPath Path to the employee details CSV file
+     */
 
     public static void displayWeeklySalary(String attendanceCsvPath, String employeeCsvPath) {
         // **Load Employee Hourly Rates First**
