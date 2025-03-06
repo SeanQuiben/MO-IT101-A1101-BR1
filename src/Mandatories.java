@@ -28,7 +28,7 @@ public class Mandatories {
         this.philHealthDeduction = new PhilHealthDeduction();
         this.pagIbigDeduction = new PagIbigDeduction();
         this.withholdingTaxDeduction = new WithholdingTaxDeduction();
-        loadEmployeeNames(employeeCsvPath); // Load names from CSV
+        loadEmployeeNames(employeeCsvPath); // Load employee names from CSV
     }
 
     /**
