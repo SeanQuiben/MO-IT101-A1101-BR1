@@ -10,12 +10,13 @@ import java.util.Map;
  */
 public class Mandatories {
 
+    // Use case of polymorphism
     private Deduction sssDeduction;
     private Deduction philHealthDeduction;
     private Deduction pagIbigDeduction;
     private Deduction withholdingTaxDeduction;
 
-    // Map to store Employee Numbers → Names
+    // Map to store Employee Numbers to Names
     private Map<String, String> employeeNames = new HashMap<>();
 
     /**
@@ -73,10 +74,10 @@ public class Mandatories {
             double totalDeductions = sss + philHealth + pagIbig + tax;
             double netSalary = grossSalary - totalDeductions;
 
-            // **Retrieve the real employee name**
+            // Retrieve the employee name
             String employeeName = employeeNames.getOrDefault(empNo, "Unknown Employee");
 
-            // **Print the correct name**
+            // Print the employee name
             System.out.printf("%-10s | %-20s | %-12.2f | %-10.2f | %.2f\n",
                     empNo, employeeName, grossSalary, totalDeductions, netSalary);
         }
