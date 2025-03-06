@@ -11,7 +11,7 @@ import java.util.Scanner;
  * 4. Compute Net Weekly Salary
  * 5. Exit the program
  *
- * The program reads employee details and attendance from CSV files.
+ * The program reads employee details and attendance from both CSV files.
  */
 
 public class MotorPH {
