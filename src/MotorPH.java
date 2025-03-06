@@ -16,15 +16,18 @@ import java.util.Scanner;
 
 public class MotorPH {
     public static void main(String[] args) {
+        // File paths for employee and attendance records
         String employeeCsvPath = "src/EmployeeDetails.csv";
         String attendanceCsvPath = "src/AttendanceRecords.csv";
 
+        // Load employee details into a list
         List<Employee> employees = Employee.loadEmployeesFromCSV(employeeCsvPath);
 
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
         while (running) {
+            // Display main menu
             System.out.println("\nWelcome to MotorPH Payroll System!");
             System.out.println("Please choose an option:");
             System.out.println("1. Employee List");
@@ -40,7 +43,7 @@ public class MotorPH {
             } catch (NumberFormatException e) {
                 choice = -1;
             }
-
+            //User selection
             switch (choice) {
                 case 1:
                     System.out.println("\n--- Employee List ---");
@@ -51,14 +54,17 @@ public class MotorPH {
                     break;
 
                 case 2:
+                    //Display total hours worked for each employee
                     TotalHours.displayTotalHours(attendanceCsvPath);
                     break;
 
                 case 3:
+                    //Compute and display gross weekly salary
                     SalaryCalculation.displayWeeklySalary(attendanceCsvPath,employeeCsvPath);
                     break;
 
                 case 4:
+                    //Compute and display net salary after deductions
                     Mandatories.displayNetWeeklySalary(attendanceCsvPath,employeeCsvPath);
                     break;
 
