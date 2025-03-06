@@ -1,6 +1,19 @@
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * MotorPH Payroll System - Main Program
+ *
+ * This program allows users to:
+ * 1. View Employee List
+ * 2. Display Total Hours Worked
+ * 3. Compute Gross Weekly Salary
+ * 4. Compute Net Weekly Salary
+ * 5. Exit the program
+ *
+ * The program reads employee details and attendance from CSV files.
+ */
+
 public class MotorPH {
     public static void main(String[] args) {
         String employeeCsvPath = "src/EmployeeDetails.csv";
