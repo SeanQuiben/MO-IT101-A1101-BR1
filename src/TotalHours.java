@@ -14,7 +14,20 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * TotalHours Class
+ *
+ * This class reads attendance records and calculates the total hours
+ * worked per employee. It also determines weekly total hours worked.
+ */
+
 public class TotalHours {
+
+    /**
+     * EmployeeHoursData Class
+     *
+     * Stores the employee's name, total hours worked, and unique weeks worked.
+     */
 
     static class EmployeeHoursData {
         String employeeName;
