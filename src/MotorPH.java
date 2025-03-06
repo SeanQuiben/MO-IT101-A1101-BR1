@@ -45,7 +45,7 @@ public class MotorPH {
             } catch (NumberFormatException e) {
                 choice = -1;
             }
-            //User selection
+            // User selection
             switch (choice) {
                 case 1:
                     System.out.println("\n--- Employee List ---");
@@ -71,11 +71,11 @@ public class MotorPH {
                     //Step 1: Get the monthly salaries from SalaryCalculation
                     Map<String, Double> monthlySalaries = SalaryCalculation.getMonthlySalaries(attendanceCsvPath,employeeCsvPath);
 
-                    //Step 2: Pass the salaries to Mandatories.java and compute net salary
-                    Mandatories mandatories = new Mandatories(employeeCsvPath);
+                    //Step 2: Create DeductionCalculator and pass employeeCsvPath
+                    Mandatories deductionCalculator = new Mandatories(employeeCsvPath);
 
                     //Step 3: Compute and display net salary with employee names
-                    mandatories.displayNetSalary(monthlySalaries);
+                    deductionCalculator.displayNetSalary(monthlySalaries);
                     break;
 
                 case 5:
