@@ -140,4 +140,59 @@ public class SalaryCalculation {
         }
         return hourlyRates;
     }
+
+    /**
+     * Computes and returns a map of Employee Number → Monthly Salary
+     * @param attendanceCsvPath Path to AttendanceRecords.csv file
+     * @param employeeCsvPath Path to EmployeeDetails.csv file
+     * @return Map of employee numbers to their computed monthly salary
+     */
+    public static Map<String, Double> getMonthlySalaries(String attendanceCsvPath, String employeeCsvPath) {
+        // Load Employee Hourly Rates First
+        Map<String, Double> employeeHourlyRates = loadEmployeeHourlyRates(employeeCsvPath);
+        Map<String, Double> monthlySalaries = new HashMap<>();
+
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm");
+        WeekFields weekFields = WeekFields.of(Locale.getDefault());
+
+        try (BufferedReader br = new BufferedReader(new FileReader(attendanceCsvPath))) {
+            String header = br.readLine(); // Skip header row
+
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] cols = line.split(",");
+                if (cols.length >= 6) {
+                    // Extract employee work data
+                    String empNo = cols[0].trim().replace("\"", "");
+                    String dateStr = cols[3].trim().replace("\"", "");
+                    String logInStr = cols[4].trim().replace("\"", "");
+                    String logOutStr = cols[5].trim().replace("\"", "");
+
+                    // Convert date and time
+                    LocalDate date = LocalDate.parse(dateStr, dateFormatter);
+                    LocalTime in = LocalTime.parse(logInStr, timeFormatter);
+                    LocalTime out = LocalTime.parse(logOutStr, timeFormatter);
+
+                    // Calculate total minutes worked
+                    long minutesWorked = ChronoUnit.MINUTES.between(in, out);
+                    double hoursWorked = minutesWorked / 60.0;
+
+                    // Get hourly rate
+                    double hourlyRate = employeeHourlyRates.getOrDefault(empNo, 0.0);
+                    double weeklySalary = hoursWorked * hourlyRate;
+
+                    // Convert to monthly salary (4 weeks)
+                    double monthlySalary = weeklySalary * 4;
+
+                    // Store employee's monthly salary
+                    monthlySalaries.put(empNo, monthlySalary);
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading attendance records: " + e.getMessage());
+        }
+
+        return monthlySalaries;
+    }
 }

@@ -1,8 +1,8 @@
 /**
  * Deduction Interface
- * Defines a structure for all deductions (SSS, PhilHealth, Pag-IBIG, Withholding Tax)
+ * Defines a standard method for computing deductions.
  */
-
-public class Deduction {
-    double compute(double monthlyComp);
+public interface Deduction {
+    double compute(double monthlyComp); // Method signature
 }
+

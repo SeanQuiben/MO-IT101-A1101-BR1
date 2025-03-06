@@ -1,5 +1,7 @@
 import java.util.List;
 import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * MotorPH Payroll System - Main Program
@@ -64,8 +66,16 @@ public class MotorPH {
                     break;
 
                 case 4:
-                    //Compute and display net salary after deductions
-                    Mandatories.displayNetWeeklySalary(attendanceCsvPath,employeeCsvPath);
+                    // **Compute Net Salary After Deductions**
+
+                    //Step 1: Get the monthly salaries from SalaryCalculation
+                    Map<String, Double> monthlySalaries = SalaryCalculation.getMonthlySalaries(attendanceCsvPath,employeeCsvPath);
+
+                    //Step 2: Pass the salaries to Mandatories.java and compute net salary
+                    Mandatories mandatories = new Mandatories(employeeCsvPath);
+
+                    //Step 3: Compute and display net salary with employee names
+                    mandatories.displayNetSalary(monthlySalaries);
                     break;
 
                 case 5:
