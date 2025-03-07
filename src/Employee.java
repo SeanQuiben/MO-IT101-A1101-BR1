@@ -6,7 +6,6 @@ import java.util.List;
 
 /**
  * Employee Class
- *
  * This shows an employee with details such as employee number, name, birthday, and hourly rates
  * This also provides a method to load employee data from EmployeeDetails.csv file
  */
