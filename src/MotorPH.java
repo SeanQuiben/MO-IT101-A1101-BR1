@@ -1,5 +1,7 @@
 import java.util.List;
 import java.util.Scanner;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * MotorPH Payroll System - Main Program
@@ -11,7 +13,7 @@ import java.util.Scanner;
  * 4. Compute Net Weekly Salary
  * 5. Exit the program
  *
- * The program reads employee details and attendance from both CSV files.
+ * The program reads employee details and attendance from CSV files.
  */
 
 public class MotorPH {
@@ -28,8 +30,8 @@ public class MotorPH {
 
         while (running) {
             // Display main menu
-            System.out.println("\nWelcome to MotorPH payroll system!");
-            System.out.println("Choose an option:");
+            System.out.println("\nWelcome to MotorPH Payroll System!");
+            System.out.println("Please choose an option:");
             System.out.println("1. Employee List");
             System.out.println("2. Total Hours Worked");
             System.out.println("3. Gross Weekly Salary");
@@ -41,9 +43,8 @@ public class MotorPH {
             try {
                 choice = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-                choice = -1; // Invalid input handling
+                choice = -1;
             }
-
             // User selection
             switch (choice) {
                 case 1:
@@ -55,18 +56,26 @@ public class MotorPH {
                     break;
 
                 case 2:
-                    // Display total hours worked for each employee
+                    //Display total hours worked for each employee
                     TotalHours.displayTotalHours(attendanceCsvPath);
                     break;
 
                 case 3:
-                    // Compute and display gross weekly salary
+                    //Compute and display gross weekly salary
                     SalaryCalculation.displayWeeklySalary(attendanceCsvPath,employeeCsvPath);
                     break;
 
                 case 4:
-                    // Compute and display net weekly salary after deductions
-                    Mandatories.displayNetWeeklySalary(attendanceCsvPath,employeeCsvPath);
+                    // **Compute Net Salary After Deductions**
+
+                    //Step 1: Get the monthly salaries from SalaryCalculation
+                    Map<String, Double> monthlySalaries = SalaryCalculation.getMonthlySalaries(attendanceCsvPath,employeeCsvPath);
+
+                    //Step 2: Create DeductionCalculator and pass employeeCsvPath
+                    Mandatories deductionCalculator = new Mandatories(employeeCsvPath);
+
+                    //Step 3: Compute and display net salary with employee names
+                    deductionCalculator.displayNetSalary(monthlySalaries);
                     break;
 
                 case 5:

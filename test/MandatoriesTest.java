@@ -10,11 +10,17 @@ public class MandatoriesTest {
         double philHealth = 375; // PhilHealth deduction
         double pagIbig = 100; // Pag-IBIG deduction
 
+        Deduction withholdingTax = new WithholdingTaxDeduction();
+
         double taxableIncome = grossSalary - (sss + philHealth + pagIbig); // Net taxable income
         double expectedTax = 513.40;
 
-        assertEquals(expectedTax, Mandatories.computeWithholdingTax(taxableIncome), 0.01);
+        // **Use case of polymorphism**
+        assertEquals(expectedTax, withholdingTax.compute(taxableIncome), 0.01);
     }
 }
+
+
+
 
 

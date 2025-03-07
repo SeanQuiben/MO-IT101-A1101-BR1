@@ -4,11 +4,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Employee Class
+ *
+ * This shows an employee with details such as employee number, name, birthday, and hourly rates
+ * This also provides a method to load employee data from EmployeeDetails.csv file
+ */
+
 public class Employee {
-    private String employeeNumber;
-    private String name;
-    private String birthday;
-    private double hourlyRate;
+    private String employeeNumber; //Employee ID
+    private String name; // Full name (first and last name)
+    private String birthday; //Birthday
+    private double hourlyRate; //Hourly rate of the employee
+
+    /**
+     *
+     *
+     * @param employeeNumber Unique Employee ID
+     * @param name Employee Full name
+     * @param birthday Birthday
+     * @param hourlyRate Hourly Rate
+     */
 
     public Employee(String employeeNumber, String name, String birthday, double hourlyRate) {
         this.employeeNumber = employeeNumber;
@@ -17,6 +33,7 @@ public class Employee {
         this.hourlyRate = hourlyRate;
     }
 
+    // Getter method
     public String getEmployeeNumber() {
         return employeeNumber;
     }
@@ -33,10 +50,22 @@ public class Employee {
         return hourlyRate;
     }
 
+    /**
+     *
+     * @return Formatted string with Employee Number, Name, Birthday
+     */
+
     @Override
     public String toString() {
         return String.format("%s | %s | %s", employeeNumber, name, birthday);
     }
+
+    /**
+     *
+     * Reads employee details from CSV file then loads them into a list
+     * @param filePath EmployeeDetails.csv file
+     * @return list of Employees
+     */
 
     public static List<Employee> loadEmployeesFromCSV(String filePath) {
         List<Employee> employees = new ArrayList<>();
@@ -53,11 +82,14 @@ public class Employee {
                     String firstName = columns[2].trim().replace("\"", "");
                     String bday      = columns[3].trim().replace("\"", "");
 
-                    String fullName = lastName + ", " + firstName;
+                    // Employee Name
+                    String fullName = firstName + " " + lastName;
 
+                    // Parse hourly rate from the last column of EmployeeDetails.csv file
                     String rateStr = columns[18].trim().replace("\"", "");
                     double rate = Double.parseDouble(rateStr);
 
+                    // Create employee object and add it to the list
                     Employee e = new Employee(empNumber, fullName, bday, rate);
                     employees.add(e);
                 }
@@ -68,6 +100,6 @@ public class Employee {
             System.err.println("Invalid HourlyRate format: " + e.getMessage());
         }
 
-        return employees;
+        return employees; // Return the list of employees
     }
 }
